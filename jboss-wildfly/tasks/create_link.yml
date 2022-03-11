@@ -1,7 +1,7 @@
 - name: Create a symbolic link
   ansible.builtin.file:
     src: /opt/wildfly-{{ WILDFLY_VERSION }}
-    dest: /opt/wildfly/wildfly-{{ WILDFLY_VERSION }}
+    dest: /opt/wildfly
     owner: wildfly
     group: wildfly
     force: yes
