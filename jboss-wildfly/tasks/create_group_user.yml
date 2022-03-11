@@ -12,3 +12,4 @@
     group: wildfly
     home: /opt/wildfly
     system: yes
+    create_home: no
