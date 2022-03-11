@@ -1,0 +1,15 @@
+---
+# tasks file for kops
+
+- name: generate latest version
+  shell: curl -s https://api.github.com/repos/kubernetes/kops/releases/latest | grep tag_name | cut -d '"' -f 4
+  register: latest_kops_version
+
+- set_fact:
+    version_number={{ kops_version | default(latest_kops_version.stdout) }}
+
+- name: download kops
+  get_url:
+    url: https://github.com/kubernetes/kops/releases/download/{{ version_number }}/kops-linux-amd64
+    dest: /usr/local/bin/kops
+    mode: 0755
