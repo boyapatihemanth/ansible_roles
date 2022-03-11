@@ -1,0 +1,11 @@
+---
+# tasks file for jboss-wildfly
+#- include: create_group_user.yml
+#- include: download_wildfly.yml
+#- include: create_link.yml
+
+- include: '{{ item }}'
+  loop:
+    - create_group_user.yml
+    - download_wildfly.yml
+    - create_link.yml

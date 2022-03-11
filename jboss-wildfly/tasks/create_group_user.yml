@@ -1,0 +1,14 @@
+- name: Ensure group "wildfly" exists
+  group:
+    name: wildfly
+    state: present
+    system: yes
+
+- name: Add the user 'wildfly'
+  user:
+    name: wildfly
+    state: present
+    shell: /sbin/nologin
+    group: wildfly
+    home: /opt/wildfly
+    system: yes

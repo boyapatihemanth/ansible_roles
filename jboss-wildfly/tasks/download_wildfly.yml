@@ -1,0 +1,12 @@
+#https://download.jboss.org/wildfly/$WILDFLY_VERSION/wildfly-$WILDFLY_VERSION.tar.gz -P /tmp
+- name: download jboss wildfly
+  get_url:
+    url: https://download.jboss.org/wildfly/{{ WILDFLY_VERSION }}/wildfly-{{ WILDFLY_VERSION }}.tar.gz
+    dest: /tmp/wildfly-{{ WILDFLY_VERSION }}.tar.gz
+    
+
+- name: Extract wildfly-{{ WILDFLY_VERSION }}.tar.gz into /opt
+  ansible.builtin.unarchive:
+    src: /tmp/wildfly-{{ WILDFLY_VERSION }}.tar.gz
+    dest: /opt/
+

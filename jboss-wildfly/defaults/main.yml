@@ -1,0 +1,3 @@
+---
+# defaults file for jboss-wildfly
+WILDFLY_VERSION: 16.0.0.Final
