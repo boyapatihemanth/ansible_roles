@@ -16,7 +16,7 @@
 - name: Ansible change permission files glob
   find:
     paths: /opt/wildfly/bin
-    patterns: *.sh
+    patterns: "*.sh"
   register: files_to_execute
 
 - name: Ansible add +x
