@@ -1,0 +1,12 @@
+- name: Enable service wildfly
+  ansible.builtin.service:
+    name: wildfly
+    enabled: yes
+
+- name: Enable firewall for 8080
+  ansible.posix.firewalld:
+    port: 8080/tcp
+    permanent: yes
+    state: enabled
+    zone: public
+  notify: Reload firewalld

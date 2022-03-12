@@ -8,4 +8,6 @@
   loop:
     - create_group_user.yml
     - download_wildfly.yml
-    - create_link.yml
+    - create_link_modify_owner.yml
+    - configure_systemd.yml
+    - enable_svc_firewall.yml
