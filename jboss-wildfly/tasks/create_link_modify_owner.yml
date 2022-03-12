@@ -6,3 +6,10 @@
     group: wildfly
     force: yes
     state: link
+- name: Change owner
+  file:
+    path: /opt/wildfly-{{ WILDFLY_VERSION }}
+    state: directory
+    recurse: yes
+    owner: wildfly
+    group: wildfly

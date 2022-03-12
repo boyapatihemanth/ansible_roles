@@ -1,2 +1,14 @@
 ---
 # handlers file for jboss-wildfly
+- name: Reload Daemon
+  command: systemctl daemon-reload
+
+- name: Restart wildfly
+  ansible.builtin.service:
+    name: wildfly
+    state: restarted
+
+- name: Reload firewalld
+  systemd:
+    name: firewalld
+    state: reloaded

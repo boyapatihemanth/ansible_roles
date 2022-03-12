@@ -1,0 +1,53 @@
+- name: Create /etc/wildfly directory
+  ansible.builtin.file:
+    path: /etc/wildfly
+    state: directory
+
+- name: Copy wildfly.conf to /etc/wildfly
+  copy:
+    src: wildfly.conf
+    dest: /etc/wildfly/wildfly.conf
+
+- name: Copy launch.sh to bin directory
+  copy:
+    src: /opt/wildfly/docs/contrib/scripts/systemd/launch.sh
+    dest: /opt/wildfly/bin/launch.sh
+
+- name: Ansible change permission files glob
+  find:
+    paths: /opt/wildfly/bin
+    patterns: *.sh
+  register: files_to_execute
+
+- name: Ansible add +x
+  file:
+    path: "{{ item.path }}"
+    mode: a+x
+  with_items: "{{ files_to_execute.files }}"
+
+
+#- name: Add execute permission to all .sh files in bin
+#  ansible.builtin.file:
+#    path: "{{ item }}"
+#    mode: a+x
+#  with_fileglob: "/opt/wildfly/bin/*.sh"
+- name: copy wildfly.service to /etc/systemd/system/
+  copy:
+    src: /opt/wildfly/docs/contrib/scripts/systemd/wildfly.service
+    dest: /etc/systemd/system/wildfly.service
+  notify:
+    - Reload Daemon
+    - Restart wildfly
+
+- name: Enable service wildfly
+  ansible.builtin.service:
+    name: wildfly
+    enabled: yes
+
+- name: Enable firewall for 8080
+  ansible.posix.firewalld:
+    port: 8080/tcp
+    permanent: yes
+    state: enabled
+    zone: public
+  notify: Reload firewalld
