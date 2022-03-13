@@ -1,8 +1,5 @@
 ---
 # tasks file for jboss-wildfly
-#- include: create_group_user.yml
-#- include: download_wildfly.yml
-#- include: create_link.yml
 
 - include: '{{ item }}'
   loop:
@@ -11,3 +8,4 @@
     - create_link_modify_owner.yml
     - configure_systemd.yml
     - enable_svc_firewall.yml
+    - enable_management_console.yml

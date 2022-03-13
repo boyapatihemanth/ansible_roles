@@ -25,12 +25,6 @@
     mode: a+x
   with_items: "{{ files_to_execute.files }}"
 
-
-#- name: Add execute permission to all .sh files in bin
-#  ansible.builtin.file:
-#    path: "{{ item }}"
-#    mode: a+x
-#  with_fileglob: "/opt/wildfly/bin/*.sh"
 - name: copy wildfly.service to /etc/systemd/system/
   copy:
     src: /opt/wildfly/docs/contrib/scripts/systemd/wildfly.service
