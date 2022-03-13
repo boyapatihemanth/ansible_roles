@@ -1,23 +1,25 @@
-Role Name
+Role Name: jboss-wildfly
 =========
 
-A brief description of the role goes here.
+Installs and configures jboss wildfly and enables admin console
 
 Requirements
 ------------
 
-Any pre-requisites that may not be covered by Ansible itself or the role should be mentioned here. For instance, if the role uses the EC2 module, it may be a good idea to mention in this section that the boto package is required.
+Need to install ansible.posix collection for firewall changes
+
+command: ansible-galaxy collection install ansible.posix
 
 Role Variables
 --------------
 
-A description of the settable variables for this role should go here, including any variables that are in defaults/main.yml, vars/main.yml, and any variables that can/should be set via parameters to the role. Any variables that are read from other roles and/or the global scope (ie. hostvars, group vars, etc.) should be mentioned here as well.
+Need admin_password variable to be passed via ansible-vault
 
 Dependencies
 ------------
 
-A list of other roles hosted on Galaxy should go here, plus any details in regards to parameters that may need to be set for other roles, or variables that are used from other roles.
-
+Need to install java before jboss. (can use java role)
+ 
 Example Playbook
 ----------------
 
@@ -25,12 +27,16 @@ Including an example of how to use your role (for instance, with variables passe
 
     - hosts: servers
       roles:
-         - { role: username.rolename, x: 42 }
-
+        - jboss-wildfly
 License
 -------
 
 BSD
+
+Additional Information
+----------------------
+
+For more details on installation steps, check https://linuxize.com/post/how-to-install-wildfly-on-centos-7/
 
 Author Information
 ------------------
