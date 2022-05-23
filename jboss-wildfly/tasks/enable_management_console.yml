@@ -1,0 +1,10 @@
+- name: add management user
+  command: /opt/wildfly/bin/add-user.sh -u administrator1 -p {{ admin_password }}
+
+- name: edit management interface ip mapping
+  lineinfile:
+    path: /opt/wildfly-16.0.0.Final/standalone/configuration/standalone.xml
+    regexp: '^(.*)jboss.bind.address.management(.*)$'
+    line: '<inet-address value="${jboss.bind.address.management:0.0.0.0}"/>'
+    backup: yes
+  notify: Restart wildfly

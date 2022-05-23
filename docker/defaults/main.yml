@@ -1,0 +1,4 @@
+---
+# defaults file for docker
+user: vagrant
+docker_pkg: docker-ce

@@ -1,0 +1,10 @@
+- name: adding existing user vagrant to group sudo
+  user:
+    name: {{ user }}
+    groups: docker
+    append: yes
+
+- name: modify file pwrmissions
+  file:
+    path: /var/run/docker.sock
+    mode: 0666

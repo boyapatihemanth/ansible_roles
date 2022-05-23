@@ -1,0 +1,10 @@
+---
+# tasks file for test
+- name: pre-requisit tasks
+  include_tasks: add_key_and_repository.yml
+  
+- name: installation
+  include_tasks: install_and_start_docker.yml
+
+- name: post installation configuration
+  include_tasks: modify_user_and_file_permissions.yml

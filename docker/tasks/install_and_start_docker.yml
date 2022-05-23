@@ -1,0 +1,14 @@
+- name: install docker
+  apt:
+    name: {{ docker_pkg }}
+    state: present
+
+- name: Start service docker, if not started
+  ansible.builtin.service:
+    name: docker
+    state: started
+
+- name: Enable docker
+  ansible.builtin.service:
+    name: docker
+    enabled: yes
