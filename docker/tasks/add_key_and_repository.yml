@@ -1,0 +1,14 @@
+- name: add key
+  ansible.builtin.apt_key:
+    url: https://download.docker.com/linux/ubuntu/gpg
+    state: present
+
+- name: get ubuntu release name
+  shell: "lsb_release -cs"
+  register: release_name
+
+
+- name: Add repository into sources list
+  ansible.builtin.apt_repository:
+    repo: deb [arch=amd64] https://download.docker.com/linux/ubuntu {{ release_name.stdout }} stable
+    state: present
