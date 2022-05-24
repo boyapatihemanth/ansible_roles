@@ -5,9 +5,7 @@ Installs docker - currently code supports ubuntu os
 
 Requirements
 ------------
-Below commands need to be executed on server - can be included as part of ansible code itself in future
-sudo apt update
-sudo apt install apt-transport-https ca-certificates curl software-properties-common
+Ansible to be installed
 
 Role Variables
 --------------

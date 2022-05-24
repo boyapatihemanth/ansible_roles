@@ -1,6 +1,6 @@
 - name: adding existing user vagrant to group sudo
   user:
-    name: {{ user }}
+    name: "{{ user }}"
     groups: docker
     append: yes
 
