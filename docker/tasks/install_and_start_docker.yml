@@ -1,6 +1,6 @@
 - name: install docker
   apt:
-    name: {{ docker_pkg }}
+    name: "{{ docker_pkg }}"
     state: present
 
 - name: Start service docker, if not started
